@@ -3,7 +3,7 @@ name: KittyGram workflow
 on:
   push:
     branches:
-      - main
+      - '*'
 
 jobs:
   backend_tests:
@@ -117,6 +117,7 @@ jobs:
           tags: ${{ secrets.DOCKER_USERNAME }}/kittygram_gateway:latest
   deploy:
     runs-on: ubuntu-latest
+    if: github.ref_name == 'main'
     needs: 
       - build_backend_and_push_to_docker_hub
       - build_frontend_and_push_to_docker_hub
