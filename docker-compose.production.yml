@@ -17,7 +17,7 @@ services:
   backend:
     image: inko75/kittygram_backend
     env_file:
-      - ./backend/kittygram_backend/.env
+      - .env
       - .env_db
     volumes:
       - static:/static
@@ -34,7 +34,7 @@ services:
   gateway:
     image: inko75/kittygram_gateway
     env_file:
-      - ./backend/kittygram_backend/.env
+      - .env
     ports:
       - 9000:80 
     volumes:
