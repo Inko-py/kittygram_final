@@ -15,7 +15,7 @@ services:
     ports:
       - 5432:5432
   backend:
-    build: ./backend/
+    image: inko75/kittygram_backend
     env_file:
       - ./backend/kittygram_backend/.env
       - .env_db
@@ -24,13 +24,15 @@ services:
       - media:/app/media
     depends_on:
       - db
+    expose:
+      - 8000
   frontend:
-    build: ./frontend/
+    image: inko75/kittygram_frontend
     command: cp -r /app/build/. /static/
     volumes:
       - static:/static
   gateway:
-    build: ./nginx/
+    image: inko75/kittygram_gateway
     env_file:
       - ./backend/kittygram_backend/.env
     ports:
