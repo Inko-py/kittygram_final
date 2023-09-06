@@ -42,7 +42,7 @@ sudo apt-get install docker-compose-plugin
 ```
 Из корневой директории проекта выполните(необходимые файлы настроек - Dockerfile для каждого контейнера в соответствующих директориях и docker-compose.yml в корне есть в проекте) :
 ```
-sudo docer compose up -d
+sudo docer compose up -d --build
 ```
 Затем примените миграции, соберите статику бэкенда и скопируйте ее в контейнере :
 ```
